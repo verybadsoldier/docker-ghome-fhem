@@ -1,0 +1,29 @@
+{
+    "ghome": {
+        "port": 3000,
+        "name": "Google Home",
+        "ssl": true,
+        "keyFile": "/home/pi/.ghome/key.pem",
+        "certFile": "/home/pi/.ghome/cert.pem",
+        "nat-pmp": "",
+        "nat-upnp": false,
+        "oauthClientId": "<change_me___oauthClientId>",
+                "oauthClientSecret": "<change_me___oauthClientSecret>",
+                "oauthUsers": {
+                        "<change_me___oauthUser>": {
+                                "password": "<change_me___password>",
+                                "authtoken": "<change_me___authtoken>"
+                        }
+                }
+    },
+    
+    "connections": [
+        {
+            "name": "FHEM",
+            "server": "127.0.0.1",
+            "port": "8083",
+            "webname": "fhem",
+            "filter": "room=GoogleHome"
+        }
+    ]
+}
