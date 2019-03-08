@@ -1,0 +1,19 @@
+version: '3'
+services:
+  ghome-fhem:
+    container_name: ghome-fhem
+    image: "verybadsoldier/ghome-fhem"
+    labels:
+      - "traefik.frontend.rule=Host:ghome.mydomain.de"
+      - "traefik.frontend.entryPoints=https"
+      - "traefik.enable=true"
+    ports:
+      - 3000:3000
+    volumes:
+      - ./config:/ghome-fhem-config
+    restart: always
+
+networks:
+  default:
+    external:
+      name: traefik_default

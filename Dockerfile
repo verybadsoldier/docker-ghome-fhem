@@ -5,7 +5,11 @@ RUN apk add --no-cache git npm
 RUN git clone https://github.com/verybadsoldier/ghome-fhem.git && \
     cd ghome-fhem && \
     git checkout 1.0.0 && \
-    npm install
+    npm install && \
+    cd frontend && \
+    npm install -g bower && \
+    echo '{ "allow_root": true }' > /root/.bowerrc && \
+    bower install
 
 
 FROM alpine
@@ -18,6 +22,8 @@ RUN mkdir /ghome-fhem-config && wget https://dl.google.com/gactions/updates/bin/
     chmod +x /ghome-fhem-config/gactions
 
 COPY config/* /ghome-fhem-config/
+
+WORKDIR /ghome-fhem
 
 VOLUME /ghome-fhem-config
 EXPOSE 3000
